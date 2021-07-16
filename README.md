@@ -40,7 +40,9 @@ Para soporte, email a leonardo.olivares@gmail.com
 
 ## Instalación
 
-Clonar repositorio y correr en xCode
+- Clonar repositorio
+- Abrir archivo The Rick and Morty Characters/The Rick and Morty Characters.xcodeproj en xCode
+- Ejecutar proyecto
 
 
 ## Herramientas y Librerías utilizadas
