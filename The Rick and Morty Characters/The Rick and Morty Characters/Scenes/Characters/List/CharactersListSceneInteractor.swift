@@ -20,7 +20,8 @@ class CharactersListSceneInteractor: CharactersListBusinessLogic {
         let apiRequest = CharactersListServiceModel.List.Request(page: currentPage)
         charactersListWorker.fetchCharactersList(request: apiRequest) { result in
             switch result {
-            case .success(let response):
+            case .success(let list):
+                print(list)
                 break
             case .failure(let error):
                 print(error.localizedDescription)
@@ -32,7 +33,8 @@ class CharactersListSceneInteractor: CharactersListBusinessLogic {
         let apiRequest = CharactersListServiceModel.Character.Request(id: request.id)
         charactersListWorker.fetchCharacter(request: apiRequest) { result in
             switch result {
-            case .success(let response):
+            case .success(let character):
+                print(character)
                 break
             case .failure(let error):
                 print(error.localizedDescription)

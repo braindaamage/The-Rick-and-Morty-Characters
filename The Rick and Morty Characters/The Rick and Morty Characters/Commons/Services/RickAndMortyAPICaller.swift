@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RickAndMostyAPIProtocol {
-    func getCharactersByPage(_ page: Int, completion: @escaping (Result<Data, Error>) -> Void)
-    func getCharacterById(_ id: Int, completion: @escaping (Result<Data, Error>) -> Void)
+    func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void)
+    func getCharacterById(_ id: Int, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void)
 }
 
 final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
@@ -22,7 +22,7 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
         case failedToGetData
     }
     
-    public func getCharactersByPage(_ page: Int, completion: @escaping (Result<Data, Error>) -> Void) {
+    public func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void) {
         createRequest(with: URL(string: "\(Constant.baseAPIURL)/?page=\(page)"),
                       type: .GET) { baseRequest in
             let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
@@ -32,8 +32,8 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
                 }
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(result)
+                    let result = try JSONDecoder().decode(RickAndMortyAPI.Characters.List.self, from: data)
+                    completion(.success(result))
                 } catch {
                     completion(.failure(error))
                 }
@@ -42,7 +42,7 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
         }
     }
     
-    public func getCharacterById(_ id: Int, completion: @escaping (Result<Data, Error>) -> Void) {
+    public func getCharacterById(_ id: Int, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void) {
         createRequest(with: URL(string: "\(Constant.baseAPIURL)/\(id)"),
                       type: .GET) { baseRequest in
             let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
@@ -52,8 +52,8 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
                 }
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(result)
+                    let result = try JSONDecoder().decode(RickAndMortyCharacter.self, from: data)
+                    completion(.success(result))
                 } catch {
                     completion(.failure(error))
                 }
