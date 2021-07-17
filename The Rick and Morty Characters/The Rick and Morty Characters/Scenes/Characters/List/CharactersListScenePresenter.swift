@@ -7,6 +7,7 @@
 
 protocol CharactersListPresentationLogic {
     func presentCharactersList(response: CharactersListSceneModel.List.Response)
+    func presentCharacterDetail(response: CharactersListSceneModel.Detail.Response)
 }
 
 class CharactersListScenePresenter: CharactersListPresentationLogic {
@@ -25,6 +26,10 @@ class CharactersListScenePresenter: CharactersListPresentationLogic {
         let viewModel = CharactersListSceneModel.List.ViewModel(list: displayedCharactersList,
                                                                 pages: response.pages)
         viewController?.displayList(viewModel: viewModel)
-        
+    }
+    
+    func presentCharacterDetail(response: CharactersListSceneModel.Detail.Response) {
+        let viewModel = CharactersListSceneModel.Detail.ViewModel()
+        viewController?.displayDetail(viewModel: viewModel)
     }
 }

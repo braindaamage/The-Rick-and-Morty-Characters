@@ -9,6 +9,7 @@ import UIKit
 
 protocol CharactersListSceneDisplayLogic: AnyObject {
     func displayList(viewModel: CharactersListSceneModel.List.ViewModel)
+    func displayDetail(viewModel: CharactersListSceneModel.Detail.ViewModel)
 }
 
 class CharactersListSceneViewController: UIViewController {
@@ -25,6 +26,7 @@ class CharactersListSceneViewController: UIViewController {
     // MARK: Object lifecycle
     
     var interactor: CharactersListBusinessLogic?
+    var router: (NSObjectProtocol & CharactersListRoutingLogic & CharactersListDataPassing)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
@@ -57,15 +59,19 @@ class CharactersListSceneViewController: UIViewController {
         let viewController = self
         let interactor = CharactersListSceneInteractor()
         let presenter = CharactersListScenePresenter()
+        let router = CharactersListSceneRouter()
         viewController.interactor = interactor
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
     }
     
     // MARK: Setting View
     
     private func settingView() {
-        title = "R&M Characters"
+        title = "RaM Characters"
         view.backgroundColor = .systemBackground
     }
     
@@ -122,6 +128,11 @@ class CharactersListSceneViewController: UIViewController {
         let request = CharactersListSceneModel.List.Request(page: currentPage)
         interactor?.fetchCharactersList(request: request)
     }
+    
+    private func prepareDetailCharacter(withId id: Int) {
+        let request = CharactersListSceneModel.Detail.Request(characterId: id)
+        interactor?.prepareCharacterDetail(request: request)
+    }
 }
 
 // MARK: - CharactersListSceneDisplayLogic
@@ -134,12 +145,18 @@ extension CharactersListSceneViewController: CharactersListSceneDisplayLogic {
         isFetching = false
         tableView.tableFooterView = nil
     }
+    
+    func displayDetail(viewModel: CharactersListSceneModel.Detail.ViewModel) {
+        router?.routeToCharacterDetail()
+    }
 }
 
 // MARK: - UITableViewDelegate
 extension CharactersListSceneViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Select row \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
+        let character = charactersList[indexPath.row]
+        prepareDetailCharacter(withId: character.id)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

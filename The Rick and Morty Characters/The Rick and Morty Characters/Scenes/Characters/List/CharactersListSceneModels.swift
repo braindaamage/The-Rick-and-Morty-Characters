@@ -22,6 +22,14 @@ enum CharactersListSceneModel {
         }
     }
     
+    enum Detail {
+        struct Request {
+            let characterId: Int
+        }
+        struct Response { }
+        struct ViewModel { }
+    }
+    
     enum Character {
         struct Request {
             let id: Int
