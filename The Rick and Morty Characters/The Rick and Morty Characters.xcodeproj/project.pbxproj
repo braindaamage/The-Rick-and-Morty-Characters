@@ -12,6 +12,10 @@
 		A7F7A93526A243FD00E323A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F7A93426A243FD00E323A6 /* Assets.xcassets */; };
 		A7F7A93826A243FD00E323A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F7A93626A243FD00E323A6 /* LaunchScreen.storyboard */; };
 		A7F7A95526A2480700E323A6 /* CharactersListSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A95426A2480700E323A6 /* CharactersListSceneViewController.swift */; };
+		A7F7A95826A24B5300E323A6 /* RickAndMortyAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A95726A24B5300E323A6 /* RickAndMortyAPICaller.swift */; };
+		A7F7A95A26A2579D00E323A6 /* CharactersListSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A95926A2579D00E323A6 /* CharactersListSceneInteractor.swift */; };
+		A7F7A95C26A2586200E323A6 /* CharactersListSceneModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A95B26A2586200E323A6 /* CharactersListSceneModels.swift */; };
+		A7F7A95E26A259CF00E323A6 /* CharactersListSceneWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A95D26A259CF00E323A6 /* CharactersListSceneWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		A7F7A93726A243FD00E323A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7F7A93926A243FD00E323A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7F7A95426A2480700E323A6 /* CharactersListSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSceneViewController.swift; sourceTree = "<group>"; };
+		A7F7A95726A24B5300E323A6 /* RickAndMortyAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPICaller.swift; sourceTree = "<group>"; };
+		A7F7A95926A2579D00E323A6 /* CharactersListSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSceneInteractor.swift; sourceTree = "<group>"; };
+		A7F7A95B26A2586200E323A6 /* CharactersListSceneModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSceneModels.swift; sourceTree = "<group>"; };
+		A7F7A95D26A259CF00E323A6 /* CharactersListSceneWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSceneWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,7 @@
 		A7F7A94226A2451B00E323A6 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				A7F7A95626A24B3400E323A6 /* Services */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -116,8 +125,19 @@
 			isa = PBXGroup;
 			children = (
 				A7F7A95426A2480700E323A6 /* CharactersListSceneViewController.swift */,
+				A7F7A95926A2579D00E323A6 /* CharactersListSceneInteractor.swift */,
+				A7F7A95B26A2586200E323A6 /* CharactersListSceneModels.swift */,
+				A7F7A95D26A259CF00E323A6 /* CharactersListSceneWorker.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		A7F7A95626A24B3400E323A6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A7F7A95726A24B5300E323A6 /* RickAndMortyAPICaller.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +210,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F7A95526A2480700E323A6 /* CharactersListSceneViewController.swift in Sources */,
+				A7F7A95A26A2579D00E323A6 /* CharactersListSceneInteractor.swift in Sources */,
 				A7F7A92C26A243FA00E323A6 /* AppDelegate.swift in Sources */,
 				A7F7A92E26A243FA00E323A6 /* SceneDelegate.swift in Sources */,
+				A7F7A95C26A2586200E323A6 /* CharactersListSceneModels.swift in Sources */,
+				A7F7A95E26A259CF00E323A6 /* CharactersListSceneWorker.swift in Sources */,
+				A7F7A95826A24B5300E323A6 /* RickAndMortyAPICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
