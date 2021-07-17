@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,17 +16,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        FirebaseApp.configure()
         
-        let navVC = UINavigationController(rootViewController: GeneralRoute.characterList.module!)
-        navVC.navigationBar.prefersLargeTitles = true
-        navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
-        
-        window.rootViewController = navVC
-        window.makeKeyAndVisible()
-        self.window = window
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            
+            if error != nil || user == nil {
+                window.rootViewController = GeneralRoute.login.module!
+                window.makeKeyAndVisible()
+                self?.window = window
+            } else {
+                let navVC = UINavigationController(rootViewController: GeneralRoute.characterList.module!)
+                navVC.navigationBar.prefersLargeTitles = true
+                navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+                
+                window.rootViewController = navVC
+                window.makeKeyAndVisible()
+                self?.window = window
+            }
+        }
         
         return true
+    }
+    
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -43,4 +59,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

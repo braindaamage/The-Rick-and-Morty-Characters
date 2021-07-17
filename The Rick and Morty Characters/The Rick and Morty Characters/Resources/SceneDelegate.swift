@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,15 +16,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let window = UIWindow(windowScene: windowScene)
-        
-        let navVC = UINavigationController(rootViewController: GeneralRoute.characterList.module!)
-        navVC.navigationBar.prefersLargeTitles = true
-        navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
-        
-        window.rootViewController = navVC
-        window.makeKeyAndVisible()
-        self.window = window
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+            let window = UIWindow(windowScene: windowScene)
+            
+            if error != nil || user == nil {
+                window.rootViewController = GeneralRoute.login.module!
+                window.makeKeyAndVisible()
+                self?.window = window
+            } else {
+                let navVC = UINavigationController(rootViewController: GeneralRoute.characterList.module!)
+                navVC.navigationBar.prefersLargeTitles = true
+                navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+                
+                window.rootViewController = navVC
+                window.makeKeyAndVisible()
+                self?.window = window
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
