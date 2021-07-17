@@ -9,7 +9,6 @@ import Foundation
 
 protocol CharacterListServiceProtocol {
     func fetchCharactersList(request: CharactersListServiceModel.List.Request, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void)
-    func fetchCharacter(request: CharactersListServiceModel.Character.Request, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void)
 }
 
 class CharacterListSceneWorker: CharacterListServiceProtocol {
@@ -24,18 +23,6 @@ class CharacterListSceneWorker: CharacterListServiceProtocol {
             switch result {
             case .success(let list):
                 completion(.success(list))
-                break
-            case.failure(let error):
-                completion(.failure(error))
-            }
-        })
-    }
-    
-    func fetchCharacter(request: CharactersListServiceModel.Character.Request, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void) {
-        apiService?.getCharacterById(request.id, completion: { result in
-            switch result {
-            case .success(let character):
-                completion(.success(character))
                 break
             case.failure(let error):
                 completion(.failure(error))

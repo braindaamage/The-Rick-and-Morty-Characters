@@ -9,7 +9,6 @@ import Foundation
 
 protocol RickAndMostyAPIProtocol {
     func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void)
-    func getCharacterById(_ id: Int, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void)
 }
 
 final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
@@ -33,26 +32,6 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
                 
                 do {
                     let result = try JSONDecoder().decode(RickAndMortyAPI.Characters.List.self, from: data)
-                    completion(.success(result))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            task.resume()
-        }
-    }
-    
-    public func getCharacterById(_ id: Int, completion: @escaping (Result<RickAndMortyCharacter, Error>) -> Void) {
-        createRequest(with: URL(string: "\(Constant.baseAPIURL)/\(id)"),
-                      type: .GET) { baseRequest in
-            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
-                guard let data = data, error == nil else {
-                    completion(.failure(APIError.failedToGetData))
-                    return
-                }
-                
-                do {
-                    let result = try JSONDecoder().decode(RickAndMortyCharacter.self, from: data)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
