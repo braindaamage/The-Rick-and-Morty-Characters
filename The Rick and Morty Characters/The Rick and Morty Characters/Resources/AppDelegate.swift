@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        let navVC = UINavigationController(rootViewController: CharactersListSceneViewController())
+        let navVC = UINavigationController(rootViewController: GeneralRoute.characterList.module!)
         navVC.navigationBar.prefersLargeTitles = true
         navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
         
