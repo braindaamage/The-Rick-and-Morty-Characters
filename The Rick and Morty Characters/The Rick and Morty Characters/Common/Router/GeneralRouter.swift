@@ -10,6 +10,7 @@ import UIKit
 enum GeneralRoute {
     case characterList
     case characterDetail
+    case login
 }
 
 extension GeneralRoute {
@@ -19,6 +20,8 @@ extension GeneralRoute {
             return CharactersListSceneViewController()
         case .characterDetail:
             return CharacterDetailSceneViewController()
+        case .login:
+            return LoginViewController()
         }
     }
 }
