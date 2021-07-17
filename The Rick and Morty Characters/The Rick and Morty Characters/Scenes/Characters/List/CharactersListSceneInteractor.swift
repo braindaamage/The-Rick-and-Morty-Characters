@@ -8,36 +8,29 @@
 import Foundation
 
 protocol CharactersListBusinessLogic {
-    func fetchNextCharactersPage(request: CharactersListSceneModel.List.Request)
-    func fetchCharacter(request: CharactersListSceneModel.Character.Request)
+    func fetchCharactersList(request: CharactersListSceneModel.List.Request)
 }
 
 class CharactersListSceneInteractor: CharactersListBusinessLogic {
-    private var currentPage = 1
+    
+    var presenter: CharactersListPresentationLogic?
     private let charactersListWorker: CharacterListServiceProtocol = CharacterListSceneWorker(apiService: RickAndMortyAPICaller())
     
-    func fetchNextCharactersPage(request: CharactersListSceneModel.List.Request) {
-        let apiRequest = CharactersListServiceModel.List.Request(page: currentPage)
-        charactersListWorker.fetchCharactersList(request: apiRequest) { result in
+    func fetchCharactersList(request: CharactersListSceneModel.List.Request) {
+        let apiRequest = CharactersListServiceModel.List.Request(page: request.page)
+        charactersListWorker.fetchCharactersList(request: apiRequest) { [weak self] result in
             switch result {
-            case .success(let list):
-                print(list)
+            case .success(let workerResponse):
+                DispatchQueue.main.async {
+                    let response = CharactersListSceneModel.List.Response(list: workerResponse.results,
+                                                                          pages: workerResponse.info.pages)
+                    self?.presenter?.presentCharactersList(response: response)
+                }
                 break
             case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func fetchCharacter(request: CharactersListSceneModel.Character.Request) {
-        let apiRequest = CharactersListServiceModel.Character.Request(id: request.id)
-        charactersListWorker.fetchCharacter(request: apiRequest) { result in
-            switch result {
-            case .success(let character):
-                print(character)
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                }
             }
         }
     }

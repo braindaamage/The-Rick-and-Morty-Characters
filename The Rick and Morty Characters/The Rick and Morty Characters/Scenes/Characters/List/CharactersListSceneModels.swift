@@ -9,9 +9,17 @@ enum CharactersListSceneModel {
     // MARK: Use cases
     
     enum List {
-        struct Request { }
-        struct Response { }
-        struct ViewModel { }
+        struct Request {
+            let page: Int
+        }
+        struct Response {
+            let list: [RickAndMortyCharacter]
+            let pages: Int
+        }
+        struct ViewModel {
+            let list: [CharactersListSceneModel.DisplayedCharacter]
+            let pages: Int
+        }
     }
     
     enum Character {
@@ -20,6 +28,12 @@ enum CharactersListSceneModel {
         }
         struct Response { }
         struct ViewModel { }
+    }
+    
+    struct DisplayedCharacter {
+        let id: Int
+        let name: String
+        let image: String
     }
 }
 
@@ -30,15 +44,11 @@ enum CharactersListServiceModel {
         struct Request {
             let page: Int
         }
-        struct Response { }
-        struct ViewModel { }
     }
     
     enum Character {
         struct Request {
             let id: Int
         }
-        struct Response { }
-        struct ViewModel { }
     }
 }
