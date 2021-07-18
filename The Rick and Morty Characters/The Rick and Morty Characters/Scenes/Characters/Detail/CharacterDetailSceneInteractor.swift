@@ -21,6 +21,11 @@ class CharacterDetailSceneInteractor: CharacterDetailBusinessLogic, CharacterDet
     var character: RickAndMortyCharacter?
     var presenter: CharacterDetailPresentationLogic?
     
+    init(character: RickAndMortyCharacter? = nil, presenter: CharacterDetailPresentationLogic? = nil) {
+        self.character = character
+        self.presenter = presenter
+    }
+    
     func fetchCharacterData(request: CharacterDetailSceneModels.Detail.Request) {
         guard let character = character else { return }
         

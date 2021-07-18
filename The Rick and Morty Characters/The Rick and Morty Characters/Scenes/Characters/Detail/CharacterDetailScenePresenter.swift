@@ -12,6 +12,10 @@ protocol CharacterDetailPresentationLogic {
 class CharacterDetailScenePresenter: CharacterDetailPresentationLogic {
     weak var viewController: CharacterDetailSceneDisplayLogic?
     
+    init(viewController: CharacterDetailSceneDisplayLogic? = nil) {
+        self.viewController = viewController
+    }
+    
     func presentCharacterDetail(response: CharacterDetailSceneModels.Detail.Response) {
         let viewModel = CharacterDetailSceneModels.Detail.ViewModel(id: response.character.id,
                                                                     name: response.character.name,
