@@ -21,11 +21,11 @@ Para soporte, email a leonardo.olivares@gmail.com
 
 ## Screenshots
 
-![App Screenshot](https://www.dropbox.com/s/26afoe0spa4ovfb/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.34.png?dl=0)
-![App Screenshot](https://www.dropbox.com/s/dxfv3wm12dk9gx7/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.44.png?dl=0)
-![App Screenshot](https://www.dropbox.com/s/qf4of8ta5ks9rur/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.05.png?dl=0)
-![App Screenshot](https://www.dropbox.com/s/m36ecsbfmwxc3mj/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.17.png?dl=0)
-![App Screenshot](https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.28.png?dl=0)
+https://www.dropbox.com/s/26afoe0spa4ovfb/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.34.png?dl=0
+https://www.dropbox.com/s/dxfv3wm12dk9gx7/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.44.png?dl=0
+https://www.dropbox.com/s/qf4of8ta5ks9rur/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.05.png?dl=0
+https://www.dropbox.com/s/m36ecsbfmwxc3mj/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.17.png?dl=0
+https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.28.png?dl=0
 
 
 
