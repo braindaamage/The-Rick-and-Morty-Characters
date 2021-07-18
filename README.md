@@ -49,7 +49,9 @@ https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%2
 ## Instalación
 
 - Clonar repositorio
-- Abrir archivo The Rick and Morty Characters/The Rick and Morty Characters.xcodeproj en xCode
+- Ingresar a la carpeta The Rick and Morty Characters
+- Ejecutar ´pod install´ para instalar las dependencias
+- Abrir archivo The Rick and Morty Characters/The Rick and Morty Characters.xcworkspace en xCode
 - Ejecutar proyecto
 
 
