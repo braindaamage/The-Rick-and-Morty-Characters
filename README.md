@@ -2,6 +2,10 @@
 
 Esta aplicación consume la API REST de https://rickandmortyapi.com para mostrar un listado de personaje y el detalle de estos
 
+## Resumen
+
+Esta aplicación se trabajó implementando todos los conocimientos obtenidos hasta la fecha, aplicando patrones de diseño y arquitectura para generar un código robusto, modularizado y escalable, la estructura de archivos está divida en modulos siendo la más importantes la carpeta "Scenes", en donde se encuentras los casos de uso o escenas (pantallas) que conforman la aplicación, ademas se agregaron algunos test unitarios a la aplicación.
+
 
 ## Autor
 
@@ -17,7 +21,11 @@ Para soporte, email a leonardo.olivares@gmail.com
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+https://www.dropbox.com/s/26afoe0spa4ovfb/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.34.png?dl=0
+https://www.dropbox.com/s/dxfv3wm12dk9gx7/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.20.44.png?dl=0
+https://www.dropbox.com/s/qf4of8ta5ks9rur/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.05.png?dl=0
+https://www.dropbox.com/s/m36ecsbfmwxc3mj/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.17.png?dl=0
+https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%20a%20la%28s%29%2022.21.28.png?dl=0
 
 
 
@@ -30,7 +38,7 @@ Para soporte, email a leonardo.olivares@gmail.com
 - [4] Vista listado de personajes
 - [5] Vista detalle de personaje
 - [6] Integración con Firebase 
-
+- [7] Testing
 
 ## Licencia
 
@@ -40,7 +48,9 @@ Para soporte, email a leonardo.olivares@gmail.com
 
 ## Instalación
 
-Clonar repositorio y correr en xCode
+- Clonar repositorio
+- Abrir archivo The Rick and Morty Characters/The Rick and Morty Characters.xcodeproj en xCode
+- Ejecutar proyecto
 
 
 ## Herramientas y Librerías utilizadas
@@ -48,4 +58,6 @@ Clonar repositorio y correr en xCode
 - xCode 12
 - Swift 5
 - UIKit
+- Firebase
+- GoogleSignIn
 

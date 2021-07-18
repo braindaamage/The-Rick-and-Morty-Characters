@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>312049333639-pnt1chccasfott4mdk32i93le0ufo061.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.312049333639-pnt1chccasfott4mdk32i93le0ufo061</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCXa0-SOrLLtT5EbTccsJ0yQzLdH74-JoU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>312049333639</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.braindaamage.The-Rick-and-Morty-Characters</string>
+	<key>PROJECT_ID</key>
+	<string>rick-and-morty-character-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rick-and-morty-character-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:312049333639:ios:5bfbb5fc16434f14be4f22</string>
+</dict>
+</plist>
