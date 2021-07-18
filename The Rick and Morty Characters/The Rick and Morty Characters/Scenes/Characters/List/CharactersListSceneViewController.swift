@@ -7,9 +7,14 @@
 
 import UIKit
 
-protocol CharactersListSceneDisplayLogic: AnyObject {
+protocol CharactersListSceneViewControllerinput {
     func displayList(viewModel: CharactersListSceneModel.List.ViewModel)
     func displayDetail(viewModel: CharactersListSceneModel.Detail.ViewModel)
+}
+
+protocol CharactersListSceneViewControllerOutput {
+    func fetchCharactersList(request: CharactersListSceneModel.List.Request)
+    func prepareCharacterDetail(request: CharactersListSceneModel.Detail.Request)
 }
 
 class CharactersListSceneViewController: UIViewController {
@@ -25,8 +30,8 @@ class CharactersListSceneViewController: UIViewController {
     
     // MARK: Object lifecycle
     
-    var interactor: CharactersListBusinessLogic?
-    var router: (NSObjectProtocol & CharactersListRoutingLogic & CharactersListDataPassing)?
+    var output: CharactersListSceneViewControllerOutput!
+    var router: (NSObjectProtocol & CharactersListSceneRouterInput & CharactersListDataPassing)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
@@ -39,6 +44,11 @@ class CharactersListSceneViewController: UIViewController {
         super.init(coder: aDecoder)
         setup()
     }
+    
+    private func setup()
+    {
+        CharactersListSceneConfigurator.sharedInstance.configure(viewController: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,22 +60,6 @@ class CharactersListSceneViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
-    }
-    
-    // MARK: Setup
-    
-    private func setup()
-    {
-        let viewController = self
-        let interactor = CharactersListSceneInteractor()
-        let presenter = CharactersListScenePresenter()
-        let router = CharactersListSceneRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
     }
     
     // MARK: Setting View
@@ -126,17 +120,17 @@ class CharactersListSceneViewController: UIViewController {
         isFetching = true
         tableView.tableFooterView = createSpinerFooter()
         let request = CharactersListSceneModel.List.Request(page: currentPage)
-        interactor?.fetchCharactersList(request: request)
+        output.fetchCharactersList(request: request)
     }
     
     private func prepareDetailCharacter(withId id: Int) {
         let request = CharactersListSceneModel.Detail.Request(characterId: id)
-        interactor?.prepareCharacterDetail(request: request)
+        output.prepareCharacterDetail(request: request)
     }
 }
 
-// MARK: - CharactersListSceneDisplayLogic
-extension CharactersListSceneViewController: CharactersListSceneDisplayLogic {
+// MARK: - CharactersListSceneViewControllerinput
+extension CharactersListSceneViewController: CharactersListSceneViewControllerinput {
     func displayList(viewModel: CharactersListSceneModel.List.ViewModel) {
         charactersList.append(contentsOf: viewModel.list)
         totalPages = viewModel.pages

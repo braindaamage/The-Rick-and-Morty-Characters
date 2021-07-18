@@ -7,9 +7,14 @@
 
 import Foundation
 
-protocol CharactersListBusinessLogic {
+protocol CharactersListSceneInteractorInput {
     func fetchCharactersList(request: CharactersListSceneModel.List.Request)
     func prepareCharacterDetail(request: CharactersListSceneModel.Detail.Request)
+}
+
+protocol CharactersListSceneInteractorOutput {
+    func presentCharactersList(response: CharactersListSceneModel.List.Response)
+    func presentCharacterDetail(response: CharactersListSceneModel.Detail.Response)
 }
 
 protocol CharactersListDataStore
@@ -17,11 +22,11 @@ protocol CharactersListDataStore
     var character: RickAndMortyCharacter? { get set }
 }
 
-class CharactersListSceneInteractor: CharactersListBusinessLogic, CharactersListDataStore {
+class CharactersListSceneInteractor: CharactersListSceneInteractorInput, CharactersListDataStore {
     
     var character: RickAndMortyCharacter?
     var charactersList: [RickAndMortyCharacter] = []
-    var presenter: CharactersListPresentationLogic?
+    var output: CharactersListSceneInteractorOutput!
     private let charactersListWorker: CharacterListServiceProtocol = CharacterListSceneWorker(apiService: RickAndMortyAPICaller())
     
     func fetchCharactersList(request: CharactersListSceneModel.List.Request) {
@@ -38,7 +43,7 @@ class CharactersListSceneInteractor: CharactersListBusinessLogic, CharactersList
                 DispatchQueue.main.async {
                     let response = CharactersListSceneModel.List.Response(list: workerResponse.results,
                                                                           pages: workerResponse.info.pages)
-                    self?.presenter?.presentCharactersList(response: response)
+                    self?.output.presentCharactersList(response: response)
                 }
                 break
             case .failure(let error):
@@ -54,6 +59,6 @@ class CharactersListSceneInteractor: CharactersListBusinessLogic, CharactersList
         self.character = character
         
         let response = CharactersListSceneModel.Detail.Response()
-        presenter?.presentCharacterDetail(response: response)
+        output.presentCharacterDetail(response: response)
     }
 }

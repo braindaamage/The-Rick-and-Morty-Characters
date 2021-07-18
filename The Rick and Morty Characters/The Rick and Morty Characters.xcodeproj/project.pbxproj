@@ -21,6 +21,9 @@
 		A72D9A1926A2BBB200DF51E0 /* CharacterDetailSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D9A1826A2BBB200DF51E0 /* CharacterDetailSceneRouter.swift */; };
 		A72D9A1B26A2BEBD00DF51E0 /* CharacterDetailSceneModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D9A1A26A2BEBD00DF51E0 /* CharacterDetailSceneModels.swift */; };
 		A72D9A1D26A2BF7B00DF51E0 /* CharacterDetailScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D9A1C26A2BF7A00DF51E0 /* CharacterDetailScenePresenter.swift */; };
+		A72F30DE26A4AD3200F8CACF /* CharactersListSceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72F30DD26A4AD3200F8CACF /* CharactersListSceneConfigurator.swift */; };
+		A72F30E026A4B36000F8CACF /* CharacterDetailSceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72F30DF26A4B36000F8CACF /* CharacterDetailSceneConfigurator.swift */; };
+		A72F30E226A4B46E00F8CACF /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72F30E126A4B46E00F8CACF /* LoginConfigurator.swift */; };
 		A78A8E6026A3C00D0047930E /* CharacterDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A8E5F26A3C00D0047930E /* CharacterDetailSceneInteractorTests.swift */; };
 		A78A8E6226A3C2E60047930E /* CharacterDetailScenePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A8E6126A3C2E60047930E /* CharacterDetailScenePresenterTests.swift */; };
 		A7B680CE26A2EAB700F060AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B680CD26A2EAB700F060AD /* LoginViewController.swift */; };
@@ -70,6 +73,9 @@
 		A72D9A1826A2BBB200DF51E0 /* CharacterDetailSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSceneRouter.swift; sourceTree = "<group>"; };
 		A72D9A1A26A2BEBD00DF51E0 /* CharacterDetailSceneModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSceneModels.swift; sourceTree = "<group>"; };
 		A72D9A1C26A2BF7A00DF51E0 /* CharacterDetailScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailScenePresenter.swift; sourceTree = "<group>"; };
+		A72F30DD26A4AD3200F8CACF /* CharactersListSceneConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSceneConfigurator.swift; sourceTree = "<group>"; };
+		A72F30DF26A4B36000F8CACF /* CharacterDetailSceneConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSceneConfigurator.swift; sourceTree = "<group>"; };
+		A72F30E126A4B46E00F8CACF /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		A78A8E5F26A3C00D0047930E /* CharacterDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
 		A78A8E6126A3C2E60047930E /* CharacterDetailScenePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailScenePresenterTests.swift; sourceTree = "<group>"; };
 		A7B680CD26A2EAB700F060AD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				A72D9A1826A2BBB200DF51E0 /* CharacterDetailSceneRouter.swift */,
 				A72D9A1A26A2BEBD00DF51E0 /* CharacterDetailSceneModels.swift */,
 				A72D9A1C26A2BF7A00DF51E0 /* CharacterDetailScenePresenter.swift */,
+				A72F30DF26A4B36000F8CACF /* CharacterDetailSceneConfigurator.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 			children = (
 				A7B680CD26A2EAB700F060AD /* LoginViewController.swift */,
 				A7B680CF26A2F68600F060AD /* LoginRouter.swift */,
+				A72F30E126A4B46E00F8CACF /* LoginConfigurator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 				A7F7A95D26A259CF00E323A6 /* CharactersListSceneWorker.swift */,
 				A72D9A0626A26A8800DF51E0 /* CharactersListScenePresenter.swift */,
 				A72D9A1126A2B72C00DF51E0 /* CharactersListSceneRouter.swift */,
+				A72F30DD26A4AD3200F8CACF /* CharactersListSceneConfigurator.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -591,6 +600,7 @@
 			files = (
 				A7F7A95526A2480700E323A6 /* CharactersListSceneViewController.swift in Sources */,
 				A7F7A95A26A2579D00E323A6 /* CharactersListSceneInteractor.swift in Sources */,
+				A72F30E026A4B36000F8CACF /* CharacterDetailSceneConfigurator.swift in Sources */,
 				A72D9A1926A2BBB200DF51E0 /* CharacterDetailSceneRouter.swift in Sources */,
 				A72D9A1026A2B31900DF51E0 /* CharacterDetailSceneViewController.swift in Sources */,
 				A72D9A1B26A2BEBD00DF51E0 /* CharacterDetailSceneModels.swift in Sources */,
@@ -599,6 +609,7 @@
 				A72D9A1526A2B86200DF51E0 /* GeneralRouter.swift in Sources */,
 				A7F7A92E26A243FA00E323A6 /* SceneDelegate.swift in Sources */,
 				A7B680CE26A2EAB700F060AD /* LoginViewController.swift in Sources */,
+				A72F30DE26A4AD3200F8CACF /* CharactersListSceneConfigurator.swift in Sources */,
 				A72D9A0526A2661100DF51E0 /* RickAndMortyAPI.swift in Sources */,
 				A7F7A95C26A2586200E323A6 /* CharactersListSceneModels.swift in Sources */,
 				A72D9A1726A2BB5200DF51E0 /* CharacterDetailSceneInteractor.swift in Sources */,
@@ -610,6 +621,7 @@
 				A72D9A0D26A29DFE00DF51E0 /* UIImageView+Ext.swift in Sources */,
 				A72D9A1226A2B72C00DF51E0 /* CharactersListSceneRouter.swift in Sources */,
 				A7F7A95826A24B5300E323A6 /* RickAndMortyAPICaller.swift in Sources */,
+				A72F30E226A4B46E00F8CACF /* LoginConfigurator.swift in Sources */,
 				A72D9A0326A2637F00DF51E0 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

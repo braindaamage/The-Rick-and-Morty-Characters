@@ -7,12 +7,12 @@
 
 import UIKit
 
-@objc protocol LoginRoutingLogic
+@objc protocol LoginRouterInput
 {
     func routeToNextScreen()
 }
 
-class LoginRouter: NSObject, LoginRoutingLogic {
+class LoginRouter: NSObject, LoginRouterInput {
     weak var viewController: UIViewController?
     
     //MARK: Routing

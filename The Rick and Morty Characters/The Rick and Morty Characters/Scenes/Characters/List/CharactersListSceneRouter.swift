@@ -7,7 +7,7 @@
 
 import UIKit
 
-@objc protocol CharactersListRoutingLogic
+@objc protocol CharactersListSceneRouterInput
 {
     func routeToCharacterDetail()
 }
@@ -17,7 +17,7 @@ protocol CharactersListDataPassing
     var dataStore: CharactersListDataStore? { get }
 }
 
-class CharactersListSceneRouter: NSObject, CharactersListRoutingLogic, CharactersListDataPassing {
+class CharactersListSceneRouter: NSObject, CharactersListSceneRouterInput, CharactersListDataPassing {
     
     weak var viewController: UIViewController?
     var dataStore: CharactersListDataStore?
