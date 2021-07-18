@@ -2,9 +2,25 @@
 
 Esta aplicación consume la API REST de https://rickandmortyapi.com para mostrar un listado de personaje y el detalle de estos
 
+
+
 ## Resumen
 
 Esta aplicación se trabajó implementando todos los conocimientos obtenidos hasta la fecha, aplicando patrones de diseño y arquitectura para generar un código robusto, modularizado y escalable, la estructura de archivos está divida en modulos siendo la más importantes la carpeta "Scenes", en donde se encuentras los casos de uso o escenas (pantallas) que conforman la aplicación, ademas se agregaron algunos test unitarios a la aplicación.
+
+
+
+## Hitos
+
+- [0] Inicialización de repositorio GIT y ramas principales
+- [1] Inicialización del proyecto y configuración inicial
+- [2] Servicios de consumo de API
+- [3] Modelo de datos
+- [4] Vista listado de personajes
+- [5] Vista detalle de personaje
+- [6] Integración con Firebase 
+- [7] Testing
+
 
 
 ## Autor
@@ -29,17 +45,6 @@ https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%2
 
 
 
-## Hitos
-
-- [0] Inicialización de repositorio GIT y ramas principales
-- [1] Inicialización del proyecto y configuración inicial
-- [2] Servicios de consumo de API
-- [3] Modelo de datos
-- [4] Vista listado de personajes
-- [5] Vista detalle de personaje
-- [6] Integración con Firebase 
-- [7] Testing
-
 ## Licencia
 
 [MIT](https://choosealicense.com/licenses/mit/)
@@ -55,6 +60,7 @@ https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%2
 - Ejecutar proyecto
 
 
+
 ## Herramientas y Librerías utilizadas
 
 - xCode 12
@@ -63,3 +69,8 @@ https://www.dropbox.com/s/bw6qfb1l8gwx0y4/Captura%20de%20Pantalla%202021-07-17%2
 - Firebase
 - GoogleSignIn
 
+## Referencias
+
+- https://clean-swift.com
+- https://developer.apple.com/documentation/
+- https://firebase.google.com/docs/ios/setup
