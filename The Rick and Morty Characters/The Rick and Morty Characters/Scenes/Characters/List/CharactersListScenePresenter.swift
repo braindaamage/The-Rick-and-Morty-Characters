@@ -5,13 +5,18 @@
 //  Created by Leonardo Olivares on 16-07-21.
 //
 
-protocol CharactersListPresentationLogic {
+protocol CharactersListScenePresenterInput {
     func presentCharactersList(response: CharactersListSceneModel.List.Response)
     func presentCharacterDetail(response: CharactersListSceneModel.Detail.Response)
 }
 
-class CharactersListScenePresenter: CharactersListPresentationLogic {
-    weak var viewController: CharactersListSceneDisplayLogic?
+protocol CharactersListScenePresenterOutput: AnyObject {
+    func displayList(viewModel: CharactersListSceneModel.List.ViewModel)
+    func displayDetail(viewModel: CharactersListSceneModel.Detail.ViewModel)
+}
+
+class CharactersListScenePresenter: CharactersListScenePresenterInput {
+    weak var output: CharactersListScenePresenterOutput!
     
     func presentCharactersList(response: CharactersListSceneModel.List.Response) {
         var displayedCharactersList: [CharactersListSceneModel.DisplayedCharacter] = []
@@ -25,11 +30,11 @@ class CharactersListScenePresenter: CharactersListPresentationLogic {
         
         let viewModel = CharactersListSceneModel.List.ViewModel(list: displayedCharactersList,
                                                                 pages: response.pages)
-        viewController?.displayList(viewModel: viewModel)
+        output.displayList(viewModel: viewModel)
     }
     
     func presentCharacterDetail(response: CharactersListSceneModel.Detail.Response) {
         let viewModel = CharactersListSceneModel.Detail.ViewModel()
-        viewController?.displayDetail(viewModel: viewModel)
+        output.displayDetail(viewModel: viewModel)
     }
 }

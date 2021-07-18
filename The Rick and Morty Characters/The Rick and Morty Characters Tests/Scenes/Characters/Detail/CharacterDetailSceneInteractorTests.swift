@@ -21,21 +21,21 @@ class CharacterDetailSceneInteractorTests: XCTestCase {
                                               location: RickAndMortyCharacter.Location(name: "Location"),
                                               image: "path/to/image")
         
-        class PresenterClassMock: CharacterDetailPresentationLogic {
+        class CharacterDetailSceneInteractorOutputMock: CharacterDetailSceneInteractorOutput {
             var character: RickAndMortyCharacter?
             func presentCharacterDetail(response: CharacterDetailSceneModels.Detail.Response) {
                 self.character = response.character
             }
         }
         
-        let presenterMock = PresenterClassMock()
+        let outputMock = CharacterDetailSceneInteractorOutputMock()
         let interactor = CharacterDetailSceneInteractor(character: character,
-                                                        presenter: presenterMock)
+                                                        output: outputMock)
         
         let request = CharacterDetailSceneModels.Detail.Request()
         interactor.fetchCharacterData(request: request)
         
-        XCTAssertNotNil(presenterMock.character)
-        XCTAssertEqual(character.id, presenterMock.character?.id)
+        XCTAssertNotNil(outputMock.character)
+        XCTAssertEqual(character.id, outputMock.character?.id)
     }
 }
