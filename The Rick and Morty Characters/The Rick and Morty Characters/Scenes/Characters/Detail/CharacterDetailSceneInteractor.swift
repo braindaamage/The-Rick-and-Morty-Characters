@@ -7,8 +7,12 @@
 
 import Foundation
 
-protocol CharacterDetailBusinessLogic {
+protocol CharacterDetailSceneInteractorInput {
     func fetchCharacterData(request: CharacterDetailSceneModels.Detail.Request)
+}
+
+protocol CharacterDetailSceneInteractorOutput {
+    func presentCharacterDetail(response: CharacterDetailSceneModels.Detail.Response)
 }
 
 protocol CharacterDetailDataStore
@@ -16,20 +20,20 @@ protocol CharacterDetailDataStore
     var character: RickAndMortyCharacter? { get set }
 }
 
-class CharacterDetailSceneInteractor: CharacterDetailBusinessLogic, CharacterDetailDataStore {
+class CharacterDetailSceneInteractor: CharacterDetailSceneInteractorInput, CharacterDetailDataStore {
     
     var character: RickAndMortyCharacter?
-    var presenter: CharacterDetailPresentationLogic?
+    var output: CharacterDetailSceneInteractorOutput!
     
-    init(character: RickAndMortyCharacter? = nil, presenter: CharacterDetailPresentationLogic? = nil) {
+    init(character: RickAndMortyCharacter? = nil, output: CharacterDetailSceneInteractorOutput? = nil) {
         self.character = character
-        self.presenter = presenter
+        self.output = output
     }
     
     func fetchCharacterData(request: CharacterDetailSceneModels.Detail.Request) {
         guard let character = character else { return }
         
         let response = CharacterDetailSceneModels.Detail.Response(character: character)
-        presenter?.presentCharacterDetail(response: response)
+        output.presentCharacterDetail(response: response)
     }
 }

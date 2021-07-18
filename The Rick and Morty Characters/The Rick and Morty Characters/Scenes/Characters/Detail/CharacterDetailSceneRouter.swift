@@ -7,16 +7,13 @@
 
 import UIKit
 
-@objc protocol CharacterDetailRoutingLogic
-{
-}
+@objc protocol CharacterDetailSceneRouterInput { }
 
-protocol CharacterDetailDataPassing
-{
+protocol CharacterDetailDataPassing {
     var dataStore: CharacterDetailDataStore? { get }
 }
 
-class CharacterDetailSceneRouter: NSObject, CharacterDetailRoutingLogic, CharacterDetailDataPassing {
+class CharacterDetailSceneRouter: NSObject, CharacterDetailSceneRouterInput, CharacterDetailDataPassing {
     
     weak var viewController: UIViewController?
     var dataStore: CharacterDetailDataStore?

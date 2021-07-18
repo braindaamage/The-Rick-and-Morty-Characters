@@ -5,15 +5,19 @@
 //  Created by Leonardo Olivares on 17-07-21.
 //
 
-protocol CharacterDetailPresentationLogic {
+protocol CharacterDetailScenePresenterInput {
     func presentCharacterDetail(response: CharacterDetailSceneModels.Detail.Response)
 }
 
-class CharacterDetailScenePresenter: CharacterDetailPresentationLogic {
-    weak var viewController: CharacterDetailSceneDisplayLogic?
+protocol CharacterDetailScenePresenterOutput: AnyObject {
+    func displayDetail(viewModel: CharacterDetailSceneModels.Detail.ViewModel)
+}
+
+class CharacterDetailScenePresenter: CharacterDetailScenePresenterInput {
+    weak var output: CharacterDetailScenePresenterOutput!
     
-    init(viewController: CharacterDetailSceneDisplayLogic? = nil) {
-        self.viewController = viewController
+    init(output: CharacterDetailScenePresenterOutput? = nil) {
+        self.output = output
     }
     
     func presentCharacterDetail(response: CharacterDetailSceneModels.Detail.Response) {
@@ -26,6 +30,6 @@ class CharacterDetailScenePresenter: CharacterDetailPresentationLogic {
                                                                     gender: response.character.gender.rawValue,
                                                                     origin: response.character.origin.name,
                                                                     location: response.character.location.name)
-        viewController?.displayDetail(viewModel: viewModel)
+        output.displayDetail(viewModel: viewModel)
     }
 }

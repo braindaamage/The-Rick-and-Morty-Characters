@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     // MARK: Object lifecycle
     
-    var router: (NSObjectProtocol & LoginRoutingLogic)?
+    var router: (NSObjectProtocol & LoginRouterInput)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
@@ -50,10 +50,7 @@ class LoginViewController: UIViewController {
     
     private func setup()
     {
-        let viewController = self
-        let router = LoginRouter()
-        viewController.router = router
-        router.viewController = viewController
+        LoginConfigurator.sharedInstance.configure(viewController: self)
     }
 
     // MARK: Setting View

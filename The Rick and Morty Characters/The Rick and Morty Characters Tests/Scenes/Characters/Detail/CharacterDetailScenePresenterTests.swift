@@ -21,20 +21,20 @@ class CharacterDetailScenePresenterTests: XCTestCase {
                                               location: RickAndMortyCharacter.Location(name: "Location"),
                                               image: "path/to/image")
         
-        class ViewControllerClassMock: CharacterDetailSceneDisplayLogic {
+        class CharacterDetailScenePresenterOutputMock: CharacterDetailScenePresenterOutput {
             var viewModel: CharacterDetailSceneModels.Detail.ViewModel?
             func displayDetail(viewModel: CharacterDetailSceneModels.Detail.ViewModel) {
                 self.viewModel = viewModel
             }
         }
         
-        let viewControllerMock = ViewControllerClassMock()
-        let presenter = CharacterDetailScenePresenter(viewController: viewControllerMock)
+        let outputMock = CharacterDetailScenePresenterOutputMock()
+        let presenter = CharacterDetailScenePresenter(output: outputMock)
         
         let response = CharacterDetailSceneModels.Detail.Response(character: character)
         presenter.presentCharacterDetail(response: response)
         
-        XCTAssertNotNil(viewControllerMock.viewModel)
-        XCTAssertEqual(character.id, viewControllerMock.viewModel?.id)
+        XCTAssertNotNil(outputMock.viewModel)
+        XCTAssertEqual(character.id, outputMock.viewModel?.id)
     }
 }

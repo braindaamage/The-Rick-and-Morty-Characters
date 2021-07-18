@@ -7,15 +7,19 @@
 
 import UIKit
 
-protocol CharacterDetailSceneDisplayLogic: AnyObject {
+protocol CharacterDetailSceneViewControllerInput {
     func displayDetail(viewModel: CharacterDetailSceneModels.Detail.ViewModel)
+}
+
+protocol CharacterDetailSceneViewControllerOutput {
+    func fetchCharacterData(request: CharacterDetailSceneModels.Detail.Request)
 }
 
 class CharacterDetailSceneViewController: UIViewController {
     // MARK: Object lifecycle
     
-    var interactor: CharacterDetailBusinessLogic?
-    var router: (NSObjectProtocol & CharacterDetailRoutingLogic & CharacterDetailDataPassing)?
+    var output: CharacterDetailSceneViewControllerOutput!
+    var router: (NSObjectProtocol & CharacterDetailSceneRouterInput & CharacterDetailDataPassing)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
@@ -36,25 +40,10 @@ class CharacterDetailSceneViewController: UIViewController {
         fetchCharacterData()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        stackView.frame = view.bounds
-    }
-    
     // MARK: Setup
     
-    private func setup()
-    {
-        let viewController = self
-        let interactor = CharacterDetailSceneInteractor()
-        let presenter = CharacterDetailScenePresenter()
-        let router = CharacterDetailSceneRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+    private func setup() {
+        CharacterDetailSceneConfigurator.sharedInstance.configure(viewController: self)
     }
     
     // MARK: Setting View
@@ -95,7 +84,7 @@ class CharacterDetailSceneViewController: UIViewController {
     
     private func fetchCharacterData() {
         let request = CharacterDetailSceneModels.Detail.Request()
-        interactor?.fetchCharacterData(request: request)
+        output.fetchCharacterData(request: request)
     }
     
     private func displayCharacterName(withText name: String) {
@@ -115,7 +104,7 @@ class CharacterDetailSceneViewController: UIViewController {
 }
 
 // MARK: - CharacterDetailSceneDisplayLogic
-extension CharacterDetailSceneViewController: CharacterDetailSceneDisplayLogic {
+extension CharacterDetailSceneViewController: CharacterDetailSceneViewControllerInput {
     func displayDetail(viewModel: CharacterDetailSceneModels.Detail.ViewModel) {
         displayCharacterName(withText: viewModel.name)
         displayCharacterAvatar(withImageView: viewModel.avatarImageView(withFrame: CGRect(x: 0, y: 0, width: 40, height: 40)))
