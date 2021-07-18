@@ -10,4 +10,8 @@ target 'The Rick and Morty Characters' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  
+  target 'The Rick and Morty Characters Tests' do
+    pod 'Firebase'
+  end
 end

@@ -4,6 +4,8 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - Firebase (6.34.0):
+    - Firebase/Core (= 6.34.0)
   - Firebase/Analytics (6.34.0):
     - Firebase/Core
   - Firebase/Auth (6.34.0):
@@ -94,6 +96,7 @@ PODS:
   - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
+  - Firebase
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Crashlytics
@@ -136,6 +139,6 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 25ec08ccdd72ccbda43fd0ef5850f721c0bc5e02
+PODFILE CHECKSUM: 06409dba967064c99b6f70167df3a805bb1cf504
 
 COCOAPODS: 1.10.0.rc.1

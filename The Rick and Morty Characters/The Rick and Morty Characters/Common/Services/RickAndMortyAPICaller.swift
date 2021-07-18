@@ -13,18 +13,30 @@ protocol RickAndMostyAPIProtocol {
 
 final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
     
+    let session: URLSession!
+    
+    init(withSession session: URLSession = .shared) {
+        self.session = session
+    }
+    
     struct Constant {
         static let baseAPIURL = "https://rickandmortyapi.com/api/character"
     }
     
     enum APIError: Error {
         case failedToGetData
+        case invalidUrl
     }
     
     public func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void) {
-        createRequest(with: URL(string: "\(Constant.baseAPIURL)/?page=\(page)"),
-                      type: .GET) { baseRequest in
-            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+        guard let url = URL(string: "\(Constant.baseAPIURL)/?page=\(page)") else {
+            completion(.failure(APIError.invalidUrl))
+            return
+        }
+        
+        createRequest(with: url,
+                      type: .GET) { [weak self] baseRequest in
+            self?.session.dataTask(with: baseRequest) { data, _, error in
                 guard let data = data, error == nil else {
                     completion(.failure(APIError.failedToGetData))
                     return
@@ -36,8 +48,7 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
                 } catch {
                     completion(.failure(error))
                 }
-            }
-            task.resume()
+            }.resume()
         }
     }
     
@@ -48,13 +59,10 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
         case POST
     }
     
-    private func createRequest(with url: URL?,
+    private func createRequest(with url: URL,
                                type: HTTPMethod,
                                completion: @escaping (URLRequest) -> Void) {
-        guard let apiUrl = url else {
-            return
-        }
-        var request = URLRequest(url: apiUrl)
+        var request = URLRequest(url: url)
         request.httpMethod = type.rawValue
         request.timeoutInterval = 30
         completion(request)
