@@ -11,9 +11,9 @@ protocol RickAndMostyAPIProtocol {
     func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void)
 }
 
-final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
+final public class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
     
-    let session: URLSession!
+    private let session: URLSession!
     
     init(withSession session: URLSession = .shared) {
         self.session = session
@@ -28,7 +28,7 @@ final class RickAndMortyAPICaller: RickAndMostyAPIProtocol {
         case invalidUrl
     }
     
-    public func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void) {
+    func getCharactersByPage(_ page: Int, completion: @escaping (Result<RickAndMortyAPI.Characters.List, Error>) -> Void) {
         guard let url = URL(string: "\(Constant.baseAPIURL)/?page=\(page)") else {
             completion(.failure(APIError.invalidUrl))
             return

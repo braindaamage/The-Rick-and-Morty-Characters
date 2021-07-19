@@ -13,9 +13,10 @@ protocol CharacterDetailDataPassing {
     var dataStore: CharacterDetailDataStore? { get }
 }
 
-class CharacterDetailSceneRouter: NSObject, CharacterDetailSceneRouterInput, CharacterDetailDataPassing {
+public final class CharacterDetailSceneRouter: NSObject,
+                                               CharacterDetailSceneRouterInput,
+                                               CharacterDetailDataPassing {
     
     weak var viewController: UIViewController?
     var dataStore: CharacterDetailDataStore?
-    
 }

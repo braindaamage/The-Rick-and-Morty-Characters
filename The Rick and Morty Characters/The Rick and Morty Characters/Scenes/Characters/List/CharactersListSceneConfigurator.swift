@@ -13,16 +13,16 @@ extension CharactersListSceneViewController: CharactersListScenePresenterOutput 
 extension CharactersListSceneInteractor: CharactersListSceneViewControllerOutput { }
 extension CharactersListScenePresenter: CharactersListSceneInteractorOutput { }
 
-class CharactersListSceneConfigurator {
+final public class CharactersListSceneConfigurator {
     // MARK: Object lifecycle
      
-    static let sharedInstance: CharactersListSceneConfigurator = {
-        CharactersListSceneConfigurator()
-    }()
+    public static let sharedInstance: CharactersListSceneConfigurator = CharactersListSceneConfigurator()
+    
+    private init() { }
 
     // MARK: Configuration
 
-    func configure(viewController: CharactersListSceneViewController) {
+    public func configure(viewController: CharactersListSceneViewController) {
         let presenter = CharactersListScenePresenter()
         presenter.output = viewController
 

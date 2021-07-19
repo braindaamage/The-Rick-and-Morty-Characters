@@ -20,12 +20,14 @@ protocol CharacterDetailDataStore
     var character: RickAndMortyCharacter? { get set }
 }
 
-class CharacterDetailSceneInteractor: CharacterDetailSceneInteractorInput, CharacterDetailDataStore {
+final public class CharacterDetailSceneInteractor: CharacterDetailSceneInteractorInput,
+                                                   CharacterDetailDataStore {
     
     var character: RickAndMortyCharacter?
     var output: CharacterDetailSceneInteractorOutput!
     
-    init(character: RickAndMortyCharacter? = nil, output: CharacterDetailSceneInteractorOutput? = nil) {
+    init(character: RickAndMortyCharacter? = nil,
+         output: CharacterDetailSceneInteractorOutput? = nil) {
         self.character = character
         self.output = output
     }
