@@ -17,7 +17,7 @@ protocol CharactersListSceneViewControllerOutput {
     func prepareCharacterDetail(request: CharactersListSceneModel.Detail.Request)
 }
 
-class CharactersListSceneViewController: UIViewController {
+public final class CharactersListSceneViewController: UIViewController {
     
     private var charactersList: [CharactersListSceneModel.DisplayedCharacter] = []
     private var currentPage: Int = 0
@@ -50,14 +50,14 @@ class CharactersListSceneViewController: UIViewController {
         CharactersListSceneConfigurator.sharedInstance.configure(viewController: self)
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         settingView()
         settingTableView()
         fetchNextPage()
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
@@ -71,7 +71,7 @@ class CharactersListSceneViewController: UIViewController {
     
     // MARK: Setting UITableView
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(RMTableViewCell.self,
                            forCellReuseIdentifier: Cells.RMcellID)
@@ -147,13 +147,13 @@ extension CharactersListSceneViewController: CharactersListSceneViewControllerin
 
 // MARK: - UITableViewDelegate
 extension CharactersListSceneViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let character = charactersList[indexPath.row]
         prepareDetailCharacter(withId: character.id)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
             fetchNextPage()
@@ -163,11 +163,11 @@ extension CharactersListSceneViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension CharactersListSceneViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return charactersList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.RMcellID, for: indexPath) as! RMTableViewCell
         
         let character = charactersList[indexPath.row]

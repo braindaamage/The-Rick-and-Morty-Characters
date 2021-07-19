@@ -15,7 +15,7 @@ protocol CharacterDetailSceneViewControllerOutput {
     func fetchCharacterData(request: CharacterDetailSceneModels.Detail.Request)
 }
 
-class CharacterDetailSceneViewController: UIViewController {
+final public class CharacterDetailSceneViewController: UIViewController {
     // MARK: Object lifecycle
     
     var output: CharacterDetailSceneViewControllerOutput!
@@ -33,7 +33,7 @@ class CharacterDetailSceneViewController: UIViewController {
         setup()
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         settingView()
         settingStackView()

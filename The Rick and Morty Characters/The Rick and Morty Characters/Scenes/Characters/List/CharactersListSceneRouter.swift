@@ -7,8 +7,7 @@
 
 import UIKit
 
-@objc protocol CharactersListSceneRouterInput
-{
+@objc protocol CharactersListSceneRouterInput {
     func routeToCharacterDetail()
 }
 
@@ -17,19 +16,21 @@ protocol CharactersListDataPassing
     var dataStore: CharactersListDataStore? { get }
 }
 
-class CharactersListSceneRouter: NSObject, CharactersListSceneRouterInput, CharactersListDataPassing {
+public final class CharactersListSceneRouter: NSObject,
+                                              CharactersListSceneRouterInput,
+                                              CharactersListDataPassing {
     
     weak var viewController: UIViewController?
     var dataStore: CharactersListDataStore?
     
     // MARK: - Routing
-    func routeToCharacterDetail() {
+    public func routeToCharacterDetail() {
         let destinationVC = GeneralRoute.characterDetail
         navigateCharacterDetail(source: viewController!, destination: destinationVC)
     }
     
     // MARK: Navigation
-    func navigateCharacterDetail(source: UIViewController, destination: GeneralRoute) {
+    private func navigateCharacterDetail(source: UIViewController, destination: GeneralRoute) {
         guard let destionationVC = destination.module as? CharacterDetailSceneViewController else { return }
         
         source.navigationController?.pushViewController(destionationVC, animated: true)
@@ -39,7 +40,7 @@ class CharactersListSceneRouter: NSObject, CharactersListSceneRouterInput, Chara
     }
     
     // MARK: Passing data
-    func passDataToCharacterDetail(source: CharactersListDataStore, destination: inout CharacterDetailDataStore) {
+    private func passDataToCharacterDetail(source: CharactersListDataStore, destination: inout CharacterDetailDataStore) {
         destination.character = source.character
     }
 }

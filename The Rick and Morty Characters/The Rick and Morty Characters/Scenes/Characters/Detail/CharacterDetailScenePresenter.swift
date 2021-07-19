@@ -13,7 +13,7 @@ protocol CharacterDetailScenePresenterOutput: AnyObject {
     func displayDetail(viewModel: CharacterDetailSceneModels.Detail.ViewModel)
 }
 
-class CharacterDetailScenePresenter: CharacterDetailScenePresenterInput {
+public final class CharacterDetailScenePresenter: CharacterDetailScenePresenterInput {
     weak var output: CharacterDetailScenePresenterOutput!
     
     init(output: CharacterDetailScenePresenterOutput? = nil) {
