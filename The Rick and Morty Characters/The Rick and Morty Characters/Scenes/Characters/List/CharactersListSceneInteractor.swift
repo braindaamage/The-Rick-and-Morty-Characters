@@ -22,10 +22,11 @@ protocol CharactersListDataStore
     var character: RickAndMortyCharacter? { get set }
 }
 
-class CharactersListSceneInteractor: CharactersListSceneInteractorInput, CharactersListDataStore {
+final public class CharactersListSceneInteractor: CharactersListSceneInteractorInput,
+                                                  CharactersListDataStore {
     
     var character: RickAndMortyCharacter?
-    var charactersList: [RickAndMortyCharacter] = []
+    private var charactersList: [RickAndMortyCharacter] = []
     var output: CharactersListSceneInteractorOutput!
     private let charactersListWorker: CharacterListServiceProtocol = CharacterListSceneWorker(apiService: RickAndMortyAPICaller())
     

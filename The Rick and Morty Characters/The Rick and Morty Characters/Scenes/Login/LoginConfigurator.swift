@@ -7,16 +7,16 @@
 
 import Foundation
 
-class LoginConfigurator {
+final public class LoginConfigurator {
     // MARK: Object lifecycle
      
-    static let sharedInstance: LoginConfigurator = {
-        LoginConfigurator()
-    }()
+    public static let sharedInstance: LoginConfigurator = LoginConfigurator()
+    
+    private init() { }
 
     // MARK: Configuration
 
-    func configure(viewController: LoginViewController) {
+    public func configure(viewController: LoginViewController) {
 
         let router = LoginRouter()
         router.viewController = viewController

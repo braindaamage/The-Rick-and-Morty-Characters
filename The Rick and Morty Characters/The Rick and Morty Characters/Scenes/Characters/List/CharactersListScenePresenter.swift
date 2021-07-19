@@ -15,7 +15,7 @@ protocol CharactersListScenePresenterOutput: AnyObject {
     func displayDetail(viewModel: CharactersListSceneModel.Detail.ViewModel)
 }
 
-class CharactersListScenePresenter: CharactersListScenePresenterInput {
+public final class CharactersListScenePresenter: CharactersListScenePresenterInput {
     weak var output: CharactersListScenePresenterOutput!
     
     func presentCharactersList(response: CharactersListSceneModel.List.Response) {

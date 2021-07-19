@@ -9,16 +9,16 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class LoginViewController: UIViewController {
+public final class LoginViewController: UIViewController {
     
-    let gidButton: GIDSignInButton = {
+    private let gidButton: GIDSignInButton = {
         let gidButton = GIDSignInButton(frame: .zero)
         gidButton.style = .wide
         
         return gidButton
     }()
     
-    let msgLabel: UILabel = {
+    private let msgLabel: UILabel = {
         let label = UILabel()
         label.textColor = .red
         
@@ -41,15 +41,14 @@ class LoginViewController: UIViewController {
         setup()
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         settingView()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup() {
         LoginConfigurator.sharedInstance.configure(viewController: self)
     }
 

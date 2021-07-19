@@ -13,12 +13,12 @@ extension CharacterDetailSceneViewController: CharacterDetailScenePresenterOutpu
 extension CharacterDetailSceneInteractor: CharacterDetailSceneViewControllerOutput { }
 extension CharacterDetailScenePresenter: CharacterDetailSceneInteractorOutput { }
 
-class CharacterDetailSceneConfigurator {
+final public class CharacterDetailSceneConfigurator {
     // MARK: Object lifecycle
      
-    static let sharedInstance: CharacterDetailSceneConfigurator = {
-        CharacterDetailSceneConfigurator()
-    }()
+    public static let sharedInstance: CharacterDetailSceneConfigurator = CharacterDetailSceneConfigurator()
+    
+    private init() { }
 
     // MARK: Configuration
 

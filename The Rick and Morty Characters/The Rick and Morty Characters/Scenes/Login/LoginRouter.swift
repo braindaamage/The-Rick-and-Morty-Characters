@@ -7,22 +7,21 @@
 
 import UIKit
 
-@objc protocol LoginRouterInput
-{
+@objc protocol LoginRouterInput {
     func routeToNextScreen()
 }
 
-class LoginRouter: NSObject, LoginRouterInput {
+public final class LoginRouter: NSObject, LoginRouterInput {
     weak var viewController: UIViewController?
     
     //MARK: Routing
-    func routeToNextScreen() {
+    public func routeToNextScreen() {
         let destionationVC = GeneralRoute.characterList
         navigateToNextScreen(source: viewController!, destination: destionationVC)
     }
     
     // MARK: Navigation
-    func navigateToNextScreen(source: UIViewController, destination: GeneralRoute) {
+    private func navigateToNextScreen(source: UIViewController, destination: GeneralRoute) {
         guard let destionationVC = destination.module else { fatalError() }
         let navigationVC = UINavigationController(rootViewController: destionationVC)
         navigationVC.navigationBar.prefersLargeTitles = true
